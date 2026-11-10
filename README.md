@@ -86,7 +86,17 @@ https://colab.research.google.com/drive/1mtwwwbtyoa9EaAPkMem4zodF6jGdFEuC#scroll
 <!-- Bandingkan hasil dengan hipotesis di Bagian 3. Hipotesis yang ternyata salah tetap bernilai,
      asalkan dijelaskan kenapa. Perbedaan kecil (lebih kecil dari simpangan baku) belum tentu berarti. -->
 
-✍️
+Berdasarkan perbandingan hasil visualisasi dari ketiga skenario, diperoleh bahwa augmentasi belum menunjukkan peningkatan kemampuan segmentasi polip dibandingkan kondisi tanpa augmentasi.
+
+Pada skenario tanpa augmentasi, model memperoleh nilai Dice sebesar 0.90 dan 0.95 pada dua contoh citra. Hasil ini menunjukkan bahwa model mampu melakukan segmentasi dengan baik pada beberapa citra, meskipun masih terdapat citra lain yang memperoleh nilai Dice 0.00.
+
+Pada skenario rotasi, hipotesis awal memperkirakan bahwa augmentasi dapat meningkatkan nilai Dice karena model dilatih mengenali polip dalam berbagai orientasi. Namun, hasil pengamatan menunjukkan nilai Dice sebesar 0.63 dan 0.94 pada dua contoh citra yang sebelumnya memperoleh 0.90 dan 0.95 pada baseline. Dengan demikian, hipotesis peningkatan Dice belum terbukti pada contoh yang diamati.
+
+Pada skenario perubahan kecerahan dan kontras, hipotesis awal juga memperkirakan peningkatan Dice karena model diharapkan lebih tahan terhadap variasi pencahayaan. Akan tetapi, hasil pengamatan menunjukkan nilai Dice sebesar 0.54 dan 0.80 pada dua contoh citra tersebut. Hal ini menunjukkan bahwa perubahan intensitas warna dan kontras mungkin membuat model lebih sulit mengenali karakteristik polip pada beberapa citra.
+
+Secara keseluruhan, berdasarkan empat contoh visualisasi, skenario tanpa augmentasi menunjukkan hasil terbaik, diikuti oleh rotasi, kemudian perubahan kecerahan dan kontras. Hal ini menunjukkan bahwa augmentasi tidak selalu meningkatkan performa segmentasi. Jenis dan tingkat augmentasi perlu disesuaikan dengan karakteristik citra kolonoskopi agar informasi penting mengenai bentuk dan batas polip tetap terjaga.
+
+Kesimpulan akhir akan ditentukan berdasarkan rata-rata Dice dan simpangan baku dari seluruh pengulangan eksperimen, sehingga dapat diketahui apakah perbedaan performa tersebut benar-benar konsisten.
 
 ## 7. Pembagian kerja
 
