@@ -70,11 +70,16 @@ https://colab.research.google.com/drive/1mtwwwbtyoa9EaAPkMem4zodF6jGdFEuC#scroll
 
 ![Peta kesalahan](hasil/peta_kesalahan.png)
 
-<!-- Hijau = benar, merah = false positive, biru = false negative.
-     Pertanyaan pemandu: Polip seperti apa yang sering terlewat (kecil? datar? warna mirip dinding usus?)
-     Apa yang sering dikira polip padahal bukan? Apakah augmentasi memperbaiki kasus sulit? -->
+Berdasarkan hasil visualisasi peta kesalahan, terlihat bahwa kemampuan model U-Net dalam melakukan segmentasi polip berbeda pada setiap skenario augmentasi. Warna hijau menunjukkan prediksi yang benar (true positive), warna merah menunjukkan kesalahan prediksi berupa false positive, sedangkan warna biru menunjukkan false negative atau bagian polip yang tidak berhasil terdeteksi.
 
-✍️
+Pada skenario tanpa augmentasi, model menunjukkan hasil yang bervariasi. Beberapa citra memperoleh nilai Dice 0.00, yang menunjukkan bahwa prediksi model belum berhasil sesuai dengan mask dokter. Namun, pada citra lainnya model mampu melakukan segmentasi dengan baik, dengan nilai Dice mencapai 0.90 dan 0.95.
+
+Pada skenario augmentasi rotasi, model belum menunjukkan peningkatan yang konsisten. Hal ini terlihat pada salah satu citra dengan nilai Dice yang menurun dari 0.90 menjadi 0.63. Meskipun demikian, pada citra lainnya hasil segmentasi masih relatif baik dengan nilai Dice 0.94.
+
+Sementara itu, skenario perubahan kecerahan dan kontras menunjukkan penurunan hasil pada contoh yang diamati. Nilai Dice pada dua citra yang sebelumnya memperoleh 0.90 dan 0.95 menurun menjadi 0.54 dan 0.80. Area false positive yang cukup luas menunjukkan bahwa model masih kesulitan membedakan polip dengan jaringan di sekitarnya setelah mendapatkan variasi pencahayaan dan kontras.
+
+Secara keseluruhan, visualisasi menunjukkan bahwa augmentasi tidak selalu meningkatkan kemampuan segmentasi. Perubahan citra yang terlalu berbeda dari karakteristik data asli berpotensi membuat model kesulitan mengenali batas polip. Namun, kesimpulan akhir tetap perlu didasarkan pada seluruh hasil pengujian dan perbandingan nilai Dice dari tiga kali pengulangan setiap skenario.
+https://colab.research.google.com/drive/1mtwwwbtyoa9EaAPkMem4zodF6jGdFEuC#scrollTo=0b460587&fullscreenOutput=true
 
 ## 6. Pembahasan & kesimpulan
 
