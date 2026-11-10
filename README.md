@@ -17,7 +17,7 @@
 
 | Nama | NIM | Username GitHub | Kontribusi utama |
 |---|---|---|---|
-| ✍️ | ✍️ | ✍️ | ✍️ misal: menjalankan eksperimen, menulis Bagian 3 |
+| Anggun Melani Putri | 123430016 | anggun-melani123430016 | Processing vscode, bagian 5, bagian 6|
 | Fadhilah U | 123430004 | dindafadhilah22-bot | Processing dan pengaturan skenario augmentasi, bagian 2,3,4|
 
 ## 1. Pertanyaan
