@@ -102,7 +102,10 @@ Kesimpulan akhir akan ditentukan berdasarkan rata-rata Dice dan simpangan baku d
 
 <!-- Siapa mengerjakan apa. Penilaian proses kerja dilihat dari riwayat commit tiap anggota. -->
 
-✍️
+| Nama | NIM | Username GitHub | Kontribusi utama |
+|---|---|---|---|
+| Anggun Melani Putri | 123430016 | anggun-melani123430016 | Processing vscode, bagian 5, bagian 6|
+| Fadhilah U | 123430004 | dindafadhilah22-bot | Processing dan pengaturan skenario augmentasi, bagian 2,3,4|
 
 ## 8. Penggunaan AI
 
