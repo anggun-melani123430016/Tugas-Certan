@@ -18,8 +18,7 @@
 | Nama | NIM | Username GitHub | Kontribusi utama |
 |---|---|---|---|
 | ✍️ | ✍️ | ✍️ | ✍️ misal: menjalankan eksperimen, menulis Bagian 3 |
-| ✍️ | ✍️ | ✍️ | ✍️ |
-| ✍️ | ✍️ | ✍️ | ✍️ |
+| Fadhilah U | 123430004 | dindafadhilah22-bot | Processing dan pengaturan skenario augmentasi, bagian 2,3,4|
 
 ## 1. Pertanyaan
 
@@ -28,11 +27,14 @@ Augmentasi apa yang membantu U-Net menemukan polip pada citra kolonoskopi, dan a
 ## 2. Data & pengaturan
 
 <!-- Isi dari Bagian 2 notebook. Pastikan CEPAT = False untuk hasil akhir. -->
-
-- Dataset: Kvasir-SEG (1000 citra kolonoskopi + mask polip), diperkecil ke 128 × 128 piksel.
-- Data uji: 200 citra (tetap). Data latih: ✍️ citra per ulangan.
-- Model: U-Net mini (±0,5 juta parameter), ✍️ epoch, ✍️ ulangan per skenario.
-- Dijalankan di: ✍️ (misal: Google Colab T4 / laptop CPU / Mac M1).
+-Dataset: Kvasir-SEG, terdiri dari 1.000 citra kolonoskopi beserta mask segmentasi polip.
+-Ukuran citra: 128 × 128 piksel.
+-Data uji: 200 citra (tetap).
+-Data latih: 800 citra per pengulangan.
+-Model: U-Net mini (sekitar 0,5 juta parameter).
+-Jumlah epoch: 30 epoch per pelatihan.
+-Pengulangan: 3 kali untuk setiap skenario.
+-Lingkungan pelatihan: Google Colab dengan GPU T4.
 
 ![Contoh data](hasil/contoh_data.png)
 
@@ -44,21 +46,25 @@ Augmentasi apa yang membantu U-Net menemukan polip pada citra kolonoskopi, dan a
 | Skenario | Augmentasi (kode) | Alasan klinis | Hipotesis: Dice naik/turun/sama? |
 |---|---|---|---|
 | Tanpa augmentasi | — | Pembanding | — |
-| ✍️ | ✍️ `v2....` | ✍️ | ✍️ |
-| ✍️ | ✍️ `v2....` | ✍️ | ✍️ |
+| Rotasi | 'v2.RandomRotation(degrees=180)' | Posisi dan orientasi polip pada citra kolonoskopi dapat berbeda karena perubahan sudut pandang kamera endoskop selama pemeriksaan. | Dice diperkirakan meningkat karena model dilatih mengenali polip dalam berbagai orientasi, bukan hanya orientasi seperti pada data asli. |
+| Perubahan pencahayaan + blur | 'v2.ColorJitter(brightness=0.3, contrast=0.3)'
+'v2.GaussianBlur(kernel_size=5, sigma=(0.1, 2.0))'| Citra kolonoskopi dapat memiliki tingkat pencahayaan dan ketajaman yang berbeda akibat perubahan jarak kamera, pencahayaan, pantulan cahaya, maupun pergerakan endoskop. | Dice diperkirakan meningkat jika model lebih tahan terhadap variasi kualitas citra. Namun, blur berlebihan dapat menurunkan Dice karena batas polip menjadi kurang jelas. |
 
 Contoh augmentasi yang dicoba:
-
-![Contoh augmentasi](hasil/augmentasi_flip.png)
+https://colab.research.google.com/drive/1mtwwwbtyoa9EaAPkMem4zodF6jGdFEuC#scrollTo=6389f853&fullscreenOutput=true 
 <!-- Ganti nama file sesuai skenario kalian (lihat isi folder hasil/). -->
 
 ## 4. Hasil
 
 <!-- Tempel isi hasil/ringkasan.md di sini. -->
 
-✍️ tempel tabel dari `hasil/ringkasan.md`
+| Skenario | Dice (rata-rata ± sb) | IoU (rata-rata ± sb) | Dice tiap ulangan |
+|---|---|---|---|
+| Tanpa augmentasi | 0.372 ± 0.000 | 0.263 ± 0.000 | 0.372 |
+| Rotasi | 0.373 ± 0.000 | 0.257 ± 0.000 | 0.373 |
+| Kecerahan dan kontras | 0.331 ± 0.000 | 0.220 ± 0.000 | 0.331 | 
 
-![Perbandingan Dice](hasil/perbandingan.png)
+https://colab.research.google.com/drive/1mtwwwbtyoa9EaAPkMem4zodF6jGdFEuC#scrollTo=14dd4f45&fullscreenOutput=true
 
 ## 5. Analisis peta kesalahan
 
