@@ -96,11 +96,7 @@ https://colab.research.google.com/drive/1mtwwwbtyoa9EaAPkMem4zodF6jGdFEuC#scroll
 
 ## 8. Penggunaan AI
 
-<!-- Wajib diisi, walau tidak memakai AI (tulis "Tidak memakai AI").
-     Contoh: "Claude Code (CLI) untuk menulis skenario augmentasi dan memperbaiki error di Bagian 4.
-     Draf Bagian 6 ditulis sendiri, lalu dirapikan bahasanya dengan bantuan AI." -->
-
-✍️
+ChatGPT (GPT) digunakan untuk membantu memahami instruksi tugas, menentukan skenario augmentasi citra, menyusun hipotesis dan alasan klinis, membantu penulisan dokumentasi README, serta memahami dan memperbaiki kesalahan kode Python pada Google Colab. Hasil eksperimen dan keputusan akhir tetap diperiksa dan disesuaikan oleh anggota kelompok.
 
 ## Cara menjalankan ulang
 
