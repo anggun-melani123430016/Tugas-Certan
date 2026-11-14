@@ -51,6 +51,7 @@ Augmentasi apa yang membantu U-Net menemukan polip pada citra kolonoskopi, dan a
 'v2.GaussianBlur(kernel_size=5, sigma=(0.1, 2.0))'| Citra kolonoskopi dapat memiliki tingkat pencahayaan dan ketajaman yang berbeda akibat perubahan jarak kamera, pencahayaan, pantulan cahaya, maupun pergerakan endoskop. | Dice diperkirakan meningkat jika model lebih tahan terhadap variasi kualitas citra. Namun, blur berlebihan dapat menurunkan Dice karena batas polip menjadi kurang jelas. |
 
 Contoh augmentasi yang dicoba:
+![Contoh augmentasi](hasil/augmentasi_flip.png)
 https://colab.research.google.com/drive/1mtwwwbtyoa9EaAPkMem4zodF6jGdFEuC#scrollTo=6389f853&fullscreenOutput=true 
 <!-- Ganti nama file sesuai skenario kalian (lihat isi folder hasil/). -->
 
@@ -64,12 +65,10 @@ https://colab.research.google.com/drive/1mtwwwbtyoa9EaAPkMem4zodF6jGdFEuC#scroll
 | Rotasi | 0.373 ± 0.000 | 0.257 ± 0.000 | 0.373 |
 | Kecerahan dan kontras | 0.331 ± 0.000 | 0.220 ± 0.000 | 0.331 | 
 
+![Perbandingan Dice](hasil/perbandingan.png)
 https://colab.research.google.com/drive/1mtwwwbtyoa9EaAPkMem4zodF6jGdFEuC#scrollTo=14dd4f45&fullscreenOutput=true
 
 ## 5. Analisis peta kesalahan
-
-![Peta kesalahan](hasil/peta_kesalahan.png)
-
 Berdasarkan hasil visualisasi peta kesalahan, terlihat bahwa kemampuan model U-Net dalam melakukan segmentasi polip berbeda pada setiap skenario augmentasi. Warna hijau menunjukkan prediksi yang benar (true positive), warna merah menunjukkan kesalahan prediksi berupa false positive, sedangkan warna biru menunjukkan false negative atau bagian polip yang tidak berhasil terdeteksi.
 
 Pada skenario tanpa augmentasi, model menunjukkan hasil yang bervariasi. Beberapa citra memperoleh nilai Dice 0.00, yang menunjukkan bahwa prediksi model belum berhasil sesuai dengan mask dokter. Namun, pada citra lainnya model mampu melakukan segmentasi dengan baik, dengan nilai Dice mencapai 0.90 dan 0.95.
@@ -79,6 +78,8 @@ Pada skenario augmentasi rotasi, model belum menunjukkan peningkatan yang konsis
 Sementara itu, skenario perubahan kecerahan dan kontras menunjukkan penurunan hasil pada contoh yang diamati. Nilai Dice pada dua citra yang sebelumnya memperoleh 0.90 dan 0.95 menurun menjadi 0.54 dan 0.80. Area false positive yang cukup luas menunjukkan bahwa model masih kesulitan membedakan polip dengan jaringan di sekitarnya setelah mendapatkan variasi pencahayaan dan kontras.
 
 Secara keseluruhan, visualisasi menunjukkan bahwa augmentasi tidak selalu meningkatkan kemampuan segmentasi. Perubahan citra yang terlalu berbeda dari karakteristik data asli berpotensi membuat model kesulitan mengenali batas polip. Namun, kesimpulan akhir tetap perlu didasarkan pada seluruh hasil pengujian dan perbandingan nilai Dice dari tiga kali pengulangan setiap skenario.
+
+![Peta kesalahan](hasil/peta_kesalahan.png)
 https://colab.research.google.com/drive/1mtwwwbtyoa9EaAPkMem4zodF6jGdFEuC#scrollTo=0b460587&fullscreenOutput=true
 
 ## 6. Pembahasan & kesimpulan
